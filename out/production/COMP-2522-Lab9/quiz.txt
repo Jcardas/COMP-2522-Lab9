@@ -1,0 +1,110 @@
+What is the capital of Canada?|Ottawa
+What is 2 + 2?|4
+What is the color of the sky on a clear day?|Blue
+Name a programming language starting with J?|Java
+What is the largest planet in our solar system?|Jupiter
+What is the chemical symbol for water?|H2O
+Who wrote "Hamlet"?|Shakespeare
+What is 5 x 6?|30
+What is the freezing point of water in Celsius?|0
+What is the largest ocean on Earth?|Pacific
+What is the capital of France?|Paris
+What is the smallest prime number?|2
+Who painted the Mona Lisa?|Leonardo da Vinci
+What is the square root of 144?|12
+What is the longest river in the world?|Nile
+How many continents are there?|7
+What gas do plants absorb from the atmosphere?|Carbon Dioxide
+What year did the Titanic sink?|1912
+Who discovered gravity?|Isaac Newton
+What is the chemical symbol for gold?|Au
+What is the powerhouse of the cell?|Mitochondria
+What planet is closest to the sun?|Mercury
+What is the boiling point of water in Celsius?|100
+What do bees collect from flowers?|Nectar
+What is the hardest natural substance on Earth?|Diamond
+How many bones are in the adult human body?|206
+What is the scientific name for humans?|Homo sapiens
+What organ pumps blood throughout the body?|Heart
+What is the chemical formula for table salt?|NaCl
+What part of the plant conducts photosynthesis?|Leaf
+What is 10 squared?|100
+What is the value of π (pi) rounded to two decimal places?|3.14
+What is 9 cubed?|729
+If you divide 30 by half and add 10, what do you get?|70
+What is the perimeter of a square with side length 5?|20
+What is 12% of 200?|24
+What is 3! (3 factorial)?|6
+What is the binary representation of 10?|1010
+How many sides does a nonagon have?|9
+What is the sum of angles in a triangle?|180
+What is the capital of Japan?|Tokyo
+What is the tallest mountain in the world?|Mount Everest
+What country has the most people?|China
+Which ocean is the deepest?|Pacific
+What is the driest desert on Earth?|Atacama Desert
+In which continent is the Amazon Rainforest located?|South America
+Which U.S. state is the largest by area?|Alaska
+What country is famous for its pyramids?|Egypt
+What is the longest river in the United States?|Missouri River
+What is the capital of Australia?|Canberra
+Who was the first President of the United States?|George Washington
+What year did World War II end?|1945
+Who was known as the “Iron Lady”?|Margaret Thatcher
+Which ancient civilization built Machu Picchu?|Inca
+Who wrote the Declaration of Independence?|Thomas Jefferson
+What empire was ruled by Julius Caesar?|Roman Empire
+What year did the Berlin Wall fall?|1989
+Who was the first man to step on the moon?|Neil Armstrong
+In which year did Christopher Columbus first arrive in America?|1492
+What was the name of the ship that brought the Pilgrims to America?|Mayflower
+What is the name of Harry Potter’s owl?|Hedwig
+Who played Iron Man in the Marvel movies?|Robert Downey Jr.
+What is the highest-grossing film of all time?|Avatar
+Who wrote “The Lord of the Rings”?|J.R.R. Tolkien
+In which year was the first Star Wars movie released?|1977
+Who is the creator of “The Simpsons”?|Matt Groening
+What is the name of SpongeBob SquarePants’ pet snail?|Gary
+Which band released the song “Bohemian Rhapsody”?|Queen
+What is Batman’s real name?|Bruce Wayne
+Who wrote the play “Romeo and Juliet”?|Shakespeare
+How many players are there in a soccer team?|11
+What sport uses a shuttlecock?|Badminton
+What country has won the most FIFA World Cups?|Brazil
+What is the national sport of Canada?|Lacrosse
+How many points is a touchdown worth in American football?|6
+In which sport would you perform a slam dunk?|Basketball
+How long is an Olympic swimming pool?|50 meters
+Which country hosts the Tour de France?|France
+What is the only team in the NFL that has gone undefeated for an entire season?|Miami Dolphins
+What is the name of the top division in English soccer?|Premier League
+Who founded Microsoft?|Bill Gates
+What does “HTTP” stand for?|HyperText Transfer Protocol
+What is the most widely used programming language?|Python
+What company makes the iPhone?|Apple
+What is the name of the AI assistant in Amazon Echo?|Alexa
+What does “CPU” stand for?|Central Processing Unit
+What is the world’s largest social media platform?|Facebook
+Who invented the World Wide Web?|Tim Berners-Lee
+What is the default file extension for Microsoft Word documents?|.docx
+What company developed the Windows operating system?|Microsoft
+What is the national flower of Japan?|Cherry Blossom
+How many sides does a stop sign have?|8
+What is the zodiac sign for someone born on December 25?|Capricorn
+What is the official language of Brazil?|Portuguese
+What does “SOS” stand for?|Save Our Souls
+Who invented the telephone?|Alexander Graham Bell
+What is the rarest blood type?|AB negative
+What is the name of the fairy in Peter Pan?|Tinkerbell
+What does the “www” in a web address stand for?|World Wide Web
+What is the largest organ in the human body?|Skin
+What is the main ingredient in guacamole?|Avocado
+What type of food is mozzarella?|Cheese
+What is the most widely consumed drink in the world after water?|Tea
+What fruit is known for having many tiny seeds on the outside?|Strawberry
+What is the main ingredient in hummus?|Chickpeas
+What is the name of the Italian dish consisting of thinly sliced raw meat?|Carpaccio
+What type of pasta is shaped like small rice grains?|Orzo
+What is the most popular ice cream flavor?|Vanilla
+What is the name of the Mexican dish made with a folded or rolled tortilla?|Taco
+What is the national dish of Japan?|Sushi
