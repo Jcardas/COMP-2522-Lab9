@@ -2,12 +2,14 @@
   <library name="lib">
     <CLASSES>
       <root url="file://$PROJECT_DIR$/.idea/javafx-sdk/lib" />
+      <root url="file://$PROJECT_DIR$/../../../../jfx/lib" />
     </CLASSES>
     <JAVADOC />
     <NATIVE>
       <root url="file://$PROJECT_DIR$/.idea/javafx-sdk/lib" />
     </NATIVE>
     <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/../../../../jfx/lib" recursive="false" />
     <jarDirectory url="file://$PROJECT_DIR$/.idea/javafx-sdk/lib" recursive="false" />
   </library>
 </component>
