@@ -14,13 +14,16 @@ import java.util.*;
  * It allows users to answer questions, track their score, and review missed questions.
  *
  * @author Justin Cardas
+ * @author Mohammad Sadeghi
+ * @author Ted Ip
+ * @version 1.0
  */
 public class QuizApp extends Application
 {
-    private List<String[]> questions            = new ArrayList<>();
+    final private List<String[]> questions            = new ArrayList<>();
     private int            currentQuestionIndex = 0;
     private int            score                = 0;
-    private List<String[]> missedQuestions      = new ArrayList<>();
+    final private List<String[]> missedQuestions      = new ArrayList<>();
 
     private Label     questionLabel;
     private TextField answerField;
@@ -35,7 +38,7 @@ public class QuizApp extends Application
      * @param primaryStage the primary stage for this application
      */
     @Override
-    public void start(Stage primaryStage)
+    public void start(final Stage primaryStage)
     {
         loadQuestions();
 
@@ -50,7 +53,6 @@ public class QuizApp extends Application
         missedTextArea = new TextArea();
         missedTextArea.setEditable(false);
         missedTextArea.setWrapText(true);
-        missedTextArea.setPrefHeight(150); // Set height to allow scrolling
 
         // Layout
         VBox layout = new VBox(10, startButton, questionLabel, answerField, submitButton, scoreLabel, missedTextArea);
@@ -82,16 +84,15 @@ public class QuizApp extends Application
     {
         try
         {
-            List<String> lines = Files.readAllLines(Paths.get("src/resources/quiz.txt"));
+            final List<String> lines = Files.readAllLines(Paths.get("src/resources/quiz.txt"));
             for(String line : lines)
             {
-                String[] parts = line.split("\\|");
+                final String[] parts = line.split("\\|");
                 if(parts.length == 2)
                 {
                     questions.add(parts);
                 }
             }
-            Collections.shuffle(questions); // Randomize question order
         } catch(IOException e)
         {
             System.out.println("Error loading questions: " + e.getMessage());
@@ -131,8 +132,8 @@ public class QuizApp extends Application
             return;
         }
 
-        String userAnswer    = answerField.getText().trim();
-        String correctAnswer = questions.get(currentQuestionIndex)[1].trim();
+        final String userAnswer    = answerField.getText().trim();
+        final String correctAnswer = questions.get(currentQuestionIndex)[1].trim();
 
         if(userAnswer.equalsIgnoreCase(correctAnswer))
         {
@@ -162,13 +163,17 @@ public class QuizApp extends Application
      */
     private void showResults()
     {
-        StringBuilder missedText = new StringBuilder();
+        final StringBuilder missedText = new StringBuilder();
         if(!missedQuestions.isEmpty())
         {
             missedText.append("Missed Questions:\n\n");
             for(String[] q : missedQuestions)
             {
-                missedText.append("Q: ").append(q[0]).append("\nA: ").append(q[1]).append("\n\n");
+                missedText.append("Q: ");
+                missedText.append(q[0]);
+                missedText.append("\nA: ");
+                missedText.append(q[1]);
+                missedText.append("\n\n");
             }
         } else
         {
@@ -177,13 +182,12 @@ public class QuizApp extends Application
 
         questionLabel.setText("Quiz Over! Your score: " + score + "/10");
         missedTextArea.setText(missedText.toString());
-        missedTextArea.setVisible(true); // Show missed questions
+        missedTextArea.setVisible(true);
         submitButton.setDisable(true);
         answerField.setDisable(true);
         startButton.setDisable(false);
     }
 
-    // Main
     public static void main(String[] args)
     {
         launch(args);
