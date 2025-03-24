@@ -23,7 +23,6 @@ import java.util.*;
  */
 public class QuizApp extends Application
 {
-    private static int MAX_TEXT_WIDTH = 100;
 
     final private List<String[]> questions            = new ArrayList<>();
     private       int            currentQuestionIndex = 0;
