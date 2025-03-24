@@ -4,6 +4,9 @@ import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+// Timer
+import javafx.animation.AnimationTimer;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -20,10 +23,14 @@ import java.util.*;
  */
 public class QuizApp extends Application
 {
+    private static int MAX_TEXT_WIDTH = 100;
+
     final private List<String[]> questions            = new ArrayList<>();
-    private int            currentQuestionIndex = 0;
-    private int            score                = 0;
+    private       int            currentQuestionIndex = 0;
+    private       int            score                = 0;
     final private List<String[]> missedQuestions      = new ArrayList<>();
+
+    private static long time = 0;
 
     private Label     questionLabel;
     private TextField answerField;
@@ -31,6 +38,10 @@ public class QuizApp extends Application
     private Button    startButton;
     private Label     scoreLabel;
     private TextArea  missedTextArea;
+
+    // Timer
+    private Label          timerLabel;
+    private AnimationTimer timer;
 
     /**
      * The main entry point for the JavaFX application.
@@ -43,28 +54,100 @@ public class QuizApp extends Application
         loadQuestions();
 
         // UI Components
-        questionLabel = new Label("Press 'Start Quiz' to begin.");
-        answerField   = new TextField();
-        submitButton  = new Button("Submit Answer");
-        startButton   = new Button("Start Quiz");
-        scoreLabel    = new Label("Score: 0/10");
+
+        // Timer
+        timerLabel = new Label("Time: 0");
+
+
+        timer = new AnimationTimer()
+        {
+            private long timestamp;
+            private long fraction = 0;
+
+            @Override
+            public void start()
+            {
+                // reset the timer
+                time      = 0;
+                timestamp = System.currentTimeMillis() - fraction;
+                super.start();
+
+            }
+
+            @Override
+            public void stop()
+            {
+                super.stop();
+                fraction = System.currentTimeMillis() - timestamp;
+            }
+
+            @Override
+
+            public void handle(final long now)
+            {
+                long newTime = System.currentTimeMillis();
+                if(timestamp + 1000 <= newTime)
+                {
+                    long deltaT = (newTime - timestamp) / 1000;
+                    time += deltaT;
+                    timestamp += 1000 * deltaT;
+                    timerLabel.setText("Time: " + time);
+                }
+            }
+        };
+
+
+        questionLabel = new
+
+                Label("Press 'Start Quiz' to begin.");
+        questionLabel.setWrapText(true);
+
+        startButton = new
+
+                Button("Start Quiz");
+
+        answerField = new
+
+                TextField();
+
+        submitButton = new
+
+                Button("Submit Answer");
+
+        scoreLabel = new
+
+                Label("Score: 0/10");
 
         // TextArea for missed questions
-        missedTextArea = new TextArea();
+        missedTextArea = new
+
+                TextArea();
         missedTextArea.setEditable(false);
         missedTextArea.setWrapText(true);
 
         // Layout
-        VBox layout = new VBox(10, startButton, questionLabel, answerField, submitButton, scoreLabel, missedTextArea);
+        VBox layout = new VBox(10, timerLabel, questionLabel, answerField, submitButton, startButton, scoreLabel, missedTextArea);
         layout.setStyle("-fx-padding: 20; -fx-alignment: center;");
         Scene scene = new Scene(layout, 400, 400);
 
-        scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+        scene.getStylesheets().
+
+             add(getClass().
+
+                         getResource("/styles.css").
+
+                         toExternalForm());
 
         // Event Handlers
-        startButton.setOnAction(e -> startQuiz());
-        submitButton.setOnAction(e -> checkAnswer());
-        answerField.setOnAction(e -> checkAnswer()); // Handle ENTER key press
+        startButton.setOnAction(e ->
+
+                                        startQuiz());
+        submitButton.setOnAction(e ->
+
+                                         checkAnswer());
+        answerField.setOnAction(e ->
+
+                                        checkAnswer()); // Handle ENTER key press
 
         // Initial UI state
         submitButton.setDisable(true);
@@ -104,6 +187,9 @@ public class QuizApp extends Application
      */
     private void startQuiz()
     {
+        // Start the timer.
+        timer.start();
+
         // Reset quiz
         currentQuestionIndex = 0;
         score                = 0;
@@ -163,9 +249,13 @@ public class QuizApp extends Application
      */
     private void showResults()
     {
+        // stops the timer.
+        timer.stop();
+
         final StringBuilder missedText = new StringBuilder();
         if(!missedQuestions.isEmpty())
         {
+            missedText.append("Time: ").append(time).append("\n");
             missedText.append("Missed Questions:\n\n");
             for(String[] q : missedQuestions)
             {
