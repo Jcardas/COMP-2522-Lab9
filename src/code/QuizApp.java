@@ -24,10 +24,10 @@ import java.util.*;
 public class QuizApp extends Application
 {
 
-    final private List<String[]> questions            = new ArrayList<>();
-    private       int            currentQuestionIndex = 0;
-    private       int            score                = 0;
-    final private List<String[]> missedQuestions      = new ArrayList<>();
+    final private List <String[]> questions            = new ArrayList <>();
+    private       int             currentQuestionIndex = 0;
+    private       int             score                = 0;
+    final private List <String[]> missedQuestions      = new ArrayList <>();
 
     private static long time = 0;
 
@@ -85,7 +85,7 @@ public class QuizApp extends Application
             public void handle(final long now)
             {
                 long newTime = System.currentTimeMillis();
-                if(timestamp + 1000 <= newTime)
+                if (timestamp + 1000 <= newTime)
                 {
                     long deltaT = (newTime - timestamp) / 1000;
                     time += deltaT;
@@ -166,27 +166,43 @@ public class QuizApp extends Application
     {
         try
         {
-            final List<String> lines = Files.readAllLines(Paths.get("src/resources/quiz.txt"));
-            for(String line : lines)
+            final List <String> lines = Files.readAllLines(Paths.get("src/resources/quiz.txt"));
+            for (String line : lines)
             {
+                if (questions.size() >= 10) break; // Load max 10 questions
+
+                if (line.trim().isEmpty()) continue; // Skip empty lines
+
                 final String[] parts = line.split("\\|");
-                if(parts.length == 2)
+                if (parts.length == 2 && ! parts[0].trim().isEmpty() && ! parts[1].trim().isEmpty())
                 {
                     questions.add(parts);
+                } else
+                {
+                    System.out.println("Skipping malformed line: " + line);
                 }
             }
-        } catch(IOException e)
+
+            System.out.println("Loaded " + questions.size() + " valid questions (max 10).");
+
+        } catch (IOException e)
         {
             System.out.println("Error loading questions: " + e.getMessage());
         }
     }
+
 
     /*
      * Starts the quiz, resetting the score and shuffling the questions.
      */
     private void startQuiz()
     {
-        // Start the timer.
+        if (questions.isEmpty())
+        {
+            questionLabel.setText("No valid questions found. Please check your quiz.txt file.");
+            return;
+        }
+
         timer.start();
 
         // Reset quiz
@@ -195,11 +211,10 @@ public class QuizApp extends Application
         missedQuestions.clear();
         Collections.shuffle(questions);
 
-        // UI updates
-        scoreLabel.setText("Score: 0/10");
+        scoreLabel.setText("Score: 0/" + questions.size());
         questionLabel.setText(questions.get(currentQuestionIndex)[0]);
         missedTextArea.clear();
-        missedTextArea.setVisible(false); // Hide missed questions at restart
+        missedTextArea.setVisible(false);
         submitButton.setDisable(false);
         answerField.setDisable(false);
         startButton.setDisable(true);
@@ -212,7 +227,7 @@ public class QuizApp extends Application
      */
     private void checkAnswer()
     {
-        if(currentQuestionIndex >= 10)
+        if (currentQuestionIndex >= questions.size())
         {
             return;
         }
@@ -220,18 +235,18 @@ public class QuizApp extends Application
         final String userAnswer    = answerField.getText().trim();
         final String correctAnswer = questions.get(currentQuestionIndex)[1].trim();
 
-        if(userAnswer.equalsIgnoreCase(correctAnswer))
+        if (userAnswer.equalsIgnoreCase(correctAnswer))
         {
             score++;
         } else
         {
-            missedQuestions.add(questions.get(currentQuestionIndex)); // Track missed question
+            missedQuestions.add(questions.get(currentQuestionIndex));
         }
 
         currentQuestionIndex++;
         answerField.clear();
 
-        if(currentQuestionIndex < 10)
+        if (currentQuestionIndex < questions.size())
         {
             questionLabel.setText(questions.get(currentQuestionIndex)[0]);
         } else
@@ -239,7 +254,7 @@ public class QuizApp extends Application
             showResults();
         }
 
-        scoreLabel.setText("Score: " + score + "/10");
+        scoreLabel.setText("Score: " + score + "/" + questions.size());
     }
 
     /*
@@ -248,28 +263,23 @@ public class QuizApp extends Application
      */
     private void showResults()
     {
-        // stops the timer.
         timer.stop();
 
         final StringBuilder missedText = new StringBuilder();
-        if(!missedQuestions.isEmpty())
+        if (! missedQuestions.isEmpty())
         {
             missedText.append("Time: ").append(time).append("\n");
             missedText.append("Missed Questions:\n\n");
-            for(String[] q : missedQuestions)
+            for (String[] q : missedQuestions)
             {
-                missedText.append("Q: ");
-                missedText.append(q[0]);
-                missedText.append("\nA: ");
-                missedText.append(q[1]);
-                missedText.append("\n\n");
+                missedText.append("Q: ").append(q[0]).append("\nA: ").append(q[1]).append("\n\n");
             }
         } else
         {
             missedText.append("Great job! You got everything right!");
         }
 
-        questionLabel.setText("Quiz Over! Your score: " + score + "/10");
+        questionLabel.setText("Quiz Over! Your score: " + score + "/" + questions.size());
         missedTextArea.setText(missedText.toString());
         missedTextArea.setVisible(true);
         submitButton.setDisable(true);
